@@ -1,0 +1,523 @@
+/* The Real ChristoSophia — shared site styles */
+:root {
+  --bg: #0a090d;
+  --bg-soft: #120f16;
+  --card: rgba(22, 18, 28, 0.86);
+  --text: #f3ebe0;
+  --text-dim: #b3a99c;
+  --gold: #d4b56a;
+  --gold-deep: #8d7036;
+  --purple: #c77dff;
+  --purple-deep: #7a3fbe;
+  --line: rgba(212, 181, 106, 0.28);
+  --line-strong: rgba(212, 181, 106, 0.5);
+  --danger-soft: #c9b8a0;
+  --display: "Cinzel", "Palatino Linotype", Palatino, serif;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "ui-monospace", Menlo, Consolas, monospace;
+  --radius: 18px;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(122, 63, 190, 0.22), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 80%, rgba(212, 181, 106, 0.07), transparent 50%),
+    radial-gradient(ellipse 40% 30% at 0% 70%, rgba(122, 63, 190, 0.08), transparent 50%),
+    var(--bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='208' viewBox='0 0 240 208'><g fill='none' stroke='%23d4b56a' stroke-width='0.7'><circle cx='120' cy='104' r='28'/><circle cx='148' cy='120' r='28'/><circle cx='92' cy='120' r='28'/><circle cx='120' cy='72' r='28'/><circle cx='148' cy='88' r='28'/><circle cx='92' cy='88' r='28'/><circle cx='120' cy='104' r='56'/><polygon points='120,28 188,160 52,160' /></g></svg>");
+  background-size: 240px 208px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(860px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3.5rem;
+}
+
+header.site {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand-mark {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.brand-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+nav.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+nav.site-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a[aria-current="page"] {
+  color: var(--gold);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.portal {
+  width: min(230px, 62vw);
+  aspect-ratio: 3 / 4.35;
+  margin: 0 auto 1.4rem;
+  position: relative;
+  filter: drop-shadow(0 0 22px rgba(199, 125, 255, 0.22)) drop-shadow(0 16px 30px rgba(0, 0, 0, 0.55));
+}
+
+.portal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  clip-path: url(#gothic-arch);
+  background: #1a1410;
+}
+
+.portal-frame {
+  position: absolute;
+  inset: -3px;
+  pointer-events: none;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin: 0 0 0.85rem;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--line-strong);
+  color: var(--gold);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.badge.purple {
+  border-color: rgba(199, 125, 255, 0.5);
+  color: var(--purple);
+}
+
+.lede,
+.description {
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 40rem;
+  margin: 1.25rem auto 0;
+}
+
+.description p {
+  margin: 0 0 0.8rem;
+}
+
+.description p:first-child {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.35rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.3rem 1.35rem;
+  margin: 1.15rem 0;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.card h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.9rem;
+}
+
+.mint-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+}
+
+.mint {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: clamp(0.68rem, 2.7vw, 0.86rem);
+  word-break: break-all;
+  background: #0b0a0e;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+button.copy {
+  flex: 0 0 auto;
+  min-width: 5.6rem;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0 0.9rem;
+}
+
+button.copy:hover,
+button.copy:focus-visible {
+  background: rgba(212, 181, 106, 0.12);
+  outline: none;
+}
+
+button.copy.copied {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem 1rem;
+  margin: 1rem 0 0;
+}
+
+.fact {
+  border-top: 1px solid var(--line);
+  padding-top: 0.55rem;
+}
+
+.fact dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.fact dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+a.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 0.7rem 0.6rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+a.btn:hover,
+a.btn:focus-visible {
+  border-color: var(--purple);
+  color: var(--purple);
+  outline: none;
+}
+
+ol.steps {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+ol.steps li {
+  margin: 0 0 0.7rem;
+  padding-left: 0.2rem;
+}
+
+ol.steps li:last-child {
+  margin-bottom: 0;
+}
+
+.note,
+.placeholder,
+.disclaimer {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.placeholder {
+  border-left: 3px solid var(--gold);
+  padding: 0.35rem 0 0.35rem 0.9rem;
+  margin: 0.4rem 0 0;
+  background: rgba(212, 181, 106, 0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.placeholder strong {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+a.token-card {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  align-items: center;
+}
+
+a.token-card:hover,
+a.token-card:focus-visible {
+  border-color: var(--purple);
+  outline: none;
+}
+
+a.token-card img {
+  width: 92px;
+  height: 120px;
+  object-fit: cover;
+  object-position: 50% 40%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.token-card h2 {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.25rem;
+  color: var(--gold);
+}
+
+.token-card p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.token-card .go {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: var(--purple);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.home-rch {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.home-rch img {
+  width: min(100%, 320px);
+  max-height: 420px;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 38%;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  justify-self: center;
+}
+
+.issuer {
+  font-family: var(--mono);
+  font-size: clamp(0.7rem, 2.6vw, 0.86rem);
+  word-break: break-all;
+  color: var(--text);
+}
+
+footer.site {
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+footer.site a {
+  color: var(--gold);
+}
+
+.disclaimer {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+a {
+  color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--purple);
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 720px) {
+  .home-rch {
+    grid-template-columns: 260px 1fr;
+    align-items: center;
+  }
+
+  .links {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .wrap {
+    width: min(900px, calc(100% - 3rem));
+    padding-top: 1.75rem;
+  }
+
+  .portal {
+    width: 250px;
+  }
+}
+
+@media (max-width: 520px) {
+  .mint-row {
+    flex-direction: column;
+  }
+
+  button.copy {
+    min-height: 2.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
